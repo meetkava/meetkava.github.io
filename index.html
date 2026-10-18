@@ -1,190 +1,203 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Meet Kava | Personal Portfolio</title>
-  <style>
-    :root {
-      --bg: #0f172a;
-      --card-bg: #1e293b;
-      --text: #f8fafc;
-      --subtext: #94a3b8;
-      --accent: #38bdf8;
-      --accent-hover: #7dd3fc;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
-    }
-
-    body {
-      background-color: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-      padding: 2rem 1rem;
-    }
-
-    .container {
-      max-width: 800px;
-      margin: 0 auto;
-    }
-
-    /* Header Profile Section */
-    header {
-      text-align: center;
-      margin-bottom: 3rem;
-    }
-
-    .profile-img { 
-      width: 130px;
-      height: 130px;
-      border-radius: 50%;
-      border: 3px solid var(--accent);
-      object-fit: cover;
-      margin-bottom: 1rem;
-      image-rendering: -webkit-optimize-contrast;  /* Prevents aggressive downscale blurring */
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Meet Kava | Personal Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --orange:#fa582d;
+  --orange-dark:#c8401c;
+  --ink:#1a1a1a;
+  --ink-soft:#4a4a4a;
+  --bg:#ffffff;
+  --bg-alt:#f3f3f3;
+  --line:#dcdcdc;
+  --dark:#000000;
+  --max:1180px;
 }
-      
-    }
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{font-family:Inter,"Helvetica Neue",Arial,sans-serif;color:var(--ink);background:var(--bg);line-height:1.6;font-size:17px;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--orange);outline-offset:3px}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
 
-    h1 {
-      font-size: 2.2rem;
-      margin-bottom: 0.5rem;
-    }
+/* Header */
+header.top{position:sticky;top:0;z-index:20;background:#fff;border-bottom:1px solid var(--line);padding-top:env(safe-area-inset-top,0px)}
+header.top .wrap{display:flex;align-items:center;justify-content:space-between;height:68px}
+.brand{font-weight:800;font-size:20px;letter-spacing:-.01em;text-decoration:none;display:flex;align-items:center;gap:10px}
+.brand i{display:inline-block;width:14px;height:14px;background:var(--orange);border-radius:2px;transform:rotate(45deg)}
+nav{display:flex;gap:28px;align-items:center}
+nav a{text-decoration:none;font-weight:600;font-size:15px;padding:6px 0;border-bottom:3px solid transparent}
+nav a:hover{border-bottom-color:var(--orange)}
+.btn{display:inline-block;background:var(--orange);color:#fff;font-weight:700;font-size:15px;padding:13px 28px;border-radius:999px;text-decoration:none;border:2px solid var(--orange);transition:background .15s,color .15s}
+.btn:hover{background:var(--orange-dark);border-color:var(--orange-dark)}
+.btn.ghost{background:transparent;color:#fff;border-color:#fff}
+.btn.ghost:hover{background:#fff;color:#000}
+nav .btn{padding:9px 20px;color:#fff}
+nav .btn:hover{border-bottom-color:var(--orange-dark)}
 
-    .subtitle {
-      color: var(--subtext);
-      font-size: 1.1rem;
-      margin-bottom: 1.5rem;
-    }
+/* Hero */
+.hero{background:var(--dark);color:#fff;overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:1.25fr 1fr;gap:56px;align-items:center;padding-top:88px;padding-bottom:88px}
+.hero h1{font-size:clamp(40px,6vw,72px);line-height:1.04;font-weight:800;letter-spacing:-.025em}
+.hero h2{font-size:clamp(20px,2.4vw,28px);font-weight:500;color:var(--orange);margin-top:18px;line-height:1.3}
+.hero p.tag{margin-top:22px;color:#cfcfcf;max-width:520px}
+.hero .actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:34px}
+.portrait{position:relative;justify-self:end;width:100%;max-width:400px}
+.portrait::before{content:"";position:absolute;inset:-14px 14px 14px -14px;border:3px solid var(--orange);border-radius:6px}
+.portrait img{position:relative;display:block;width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:6px;background:#222}
 
-    /* Sections & Cards */
-    section {
-      background: var(--card-bg);
-      padding: 1.8rem;
-      border-radius: 12px;
-      margin-bottom: 2rem;
-      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
-    }
+/* Sections */
+section{padding:84px 0}
+section.alt{background:var(--bg-alt)}
+.kicker{font-weight:700;font-size:15px;color:var(--orange);margin-bottom:10px}
+h3.sec{font-size:clamp(28px,3.6vw,44px);line-height:1.12;font-weight:800;letter-spacing:-.02em;max-width:760px}
+.lede{margin-top:20px;max-width:720px;color:var(--ink-soft);font-size:19px}
 
-    h2 {
-      color: var(--accent);
-      font-size: 1.4rem;
-      margin-bottom: 1rem;
-      border-bottom: 1px solid #334155;
-      padding-bottom: 0.5rem;
-    }
+/* Skills */
+.skills{display:flex;flex-wrap:wrap;gap:12px;margin-top:36px;list-style:none}
+.skills li{background:#fff;border:2px solid var(--ink);padding:9px 20px;border-radius:999px;font-weight:600;font-size:15px;transition:background .15s,color .15s,border-color .15s}
+.skills li:hover{background:var(--orange);border-color:var(--orange);color:#fff}
 
-    p {
-      color: var(--subtext);
-      margin-bottom: 1rem;
-    }
+/* Project cards */
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:28px;margin-top:40px}
+.card{background:#fff;border:1px solid var(--line);border-top:6px solid var(--orange);padding:34px 32px 30px}
+.card h4{font-size:24px;line-height:1.25;font-weight:700;letter-spacing:-.01em}
+.card p{margin-top:14px;color:var(--ink-soft)}
 
-    /* Skills Badges */
-    /* class="profile-img" */
-    .skills-grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.6rem;
-    }
-  
+/* Contact band */
+.band{background:var(--orange);color:#fff;padding:64px 0}
+.band .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:24px}
+.band h3{font-size:clamp(26px,3.2vw,38px);font-weight:800;letter-spacing:-.02em;max-width:620px;line-height:1.15}
+.band .btn{background:#000;border-color:#000}
+.band .btn:hover{background:#fff;color:#000;border-color:#fff}
+.band .links{display:flex;gap:12px;flex-wrap:wrap}
 
-    .skill-tag {
-      background: #334155;
-      color: var(--text);
-      padding: 0.4rem 0.8rem;
-      border-radius: 6px;
-      font-size: 0.9rem;
-    }
+/* Footer */
+footer{background:var(--dark);color:#bdbdbd;padding:44px 0 calc(44px + env(safe-area-inset-bottom,0px));font-size:15px}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:18px}
+footer a{text-decoration:none;color:#fff;font-weight:600;margin-left:22px}
+footer a:first-child{margin-left:0}
+footer a:hover{color:var(--orange)}
 
-    /* Social Links */
-    .links {
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-
-    .btn {
-      display: inline-block;
-      padding: 0.6rem 1.2rem;
-      background-color: var(--accent);
-      color: #0f172a;
-      text-decoration: none;
-      font-weight: 600;
-      border-radius: 8px;
-      transition: background 0.2s ease;
-    }
-
-    .btn:hover {
-      background-color: var(--accent-hover);
-    }
-
-    footer {
-      text-align: center;
-      color: var(--subtext);
-      font-size: 0.85rem;
-      margin-top: 3rem;
-    }
-  </style>
+@media (max-width:860px){
+  .hero .wrap{grid-template-columns:1fr;padding-top:56px;padding-bottom:64px;gap:44px}
+  .portrait{justify-self:start;max-width:300px;margin-left:14px}
+  .grid{grid-template-columns:1fr}
+  nav a:not(.btn){display:none}
+  section{padding:60px 0}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+</style>
 </head>
 <body>
 
-  <div class="container">
-    <header>
-      <img src="MK_GT_PRO.png" alt="Meet Kava" width="300" height="300" style="border-radius: 50%; border: 7px ;" > 
-    
-      <h1>Meet Kava</h1>
-      <p class="subtitle">Engineer | Security &amp; Network Specialist</p>
-      
-      <div class="links">
-        <a href="mailto:meetkava1455@example.com" class="btn">Email Me</a>
-        <a href="https://www.linkedin.com/in/meet-kava-740792109/" target="_blank" rel="noopener noreferrer" class="btn">LinkedIn</a>
-        <a href="https://github.com/meetkava1455" target="_blank" rel="noopener noreferrer" class="btn">GitHub</a>
-      </div>
-    </header>
-
-    <section id="about">
-      <h2>About Me</h2>
-      <p>
-        Welcome to my personal site! I specialize in Network security, Next-Generation Firewalls, Web security, Application Delivery Controllers (Load Balancers), and Cloud security.
-      </p>
-    </section>
-
-    <section id="skills">
-      <h2>Technical Skills</h2>
-      <div class="skills-grid">
-        <span class="skill-tag">Network Security</span>
-        <span class="skill-tag">Firewalls</span>
-        <span class="skill-tag">Load Balancers</span>
-        <span class="skill-tag">Palo Alto Networks</span>
-        <span class="skill-tag">Cisco Systems</span>
-        <span class="skill-tag">Fortinet</span>
-        <span class="skill-tag">F5 Systems</span>
-        <span class="skill-tag">Citrix ADC</span>
-        <span class="skill-tag">Zscaler</span>
-        <span class="skill-tag">Netskope</span>
-        <span class="skill-tag">AWS</span>
-        <span class="skill-tag">Azure</span>
-        <span class="skill-tag">Ethical Hacking</span>
-        <span class="skill-tag">Security AI</span>
-      </div>
-    </section>
-
-    <section id="projects">
-      <h2>Projects &amp; Focus Areas</h2>
-      <p><strong>Network & Security Design and Policy Optimizer:</strong> Developed custom automation scripts for firewall rule validation.</p>
-      <p><strong>Personal Knowledge Hub:</strong> Created structured learning notes on cybersecurity frameworks and core computer networking concepts.</p>
-    </section>
-
-    <footer>
-      <p>&copy; 2026 Meet Kava. Hosted on GitHub Pages.</p>
-    </footer>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#top"><i></i>Meet Kava</a>
+    <nav aria-label="Primary">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a class="btn" href="mailto:meetkava1455@example.com">Email me</a>
+    </nav>
   </div>
+</header>
+
+<main id="top">
+  <div class="hero">
+    <div class="wrap">
+      <div>
+        <h1>Meet Kava</h1>
+        <h2>Engineer | Security &amp; Network Specialist</h2>
+        <p class="tag">Network security, next-generation firewalls, web security, application delivery and cloud security.</p>
+        <div class="actions">
+          <a class="btn" href="mailto:meetkava1455@example.com">Email me</a>
+          <a class="btn ghost" href="https://www.linkedin.com/in/meet-kava-740792109/">LinkedIn</a>
+          <a class="btn ghost" href="https://github.com/meetkava1455">GitHub</a>
+        </div>
+      </div>
+      <div class="portrait">
+        <img src="MK_GT_PRO.png" alt="Portrait of Meet Kava">
+      </div>
+    </div>
+  </div>
+
+  <section id="about">
+    <div class="wrap">
+      <p class="kicker">About me</p>
+      <h3 class="sec">Welcome to my personal site.</h3>
+      <p class="lede">I specialize in network security, next-generation firewalls, web security, application delivery controllers (load balancers) and cloud security.</p>
+    </div>
+  </section>
+
+  <section id="skills" class="alt">
+    <div class="wrap">
+      <p class="kicker">Technical skills</p>
+      <h3 class="sec">Tools and platforms I work with.</h3>
+      <ul class="skills">
+        <li>Network Security</li>
+        <li>Firewalls</li>
+        <li>Load Balancers</li>
+        <li>Palo Alto Networks</li>
+        <li>Cisco Systems</li>
+        <li>Fortinet</li>
+        <li>F5 Systems</li>
+        <li>Citrix ADC</li>
+        <li>Zscaler</li>
+        <li>Netskope</li>
+        <li>AWS</li>
+        <li>Azure</li>
+        <li>Ethical Hacking</li>
+        <li>Security AI</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="wrap">
+      <p class="kicker">Projects &amp; focus areas</p>
+      <h3 class="sec">Security design, automation and continuous learning.</h3>
+      <div class="grid">
+        <article class="card">
+          <h4>Network &amp; Security Design and Policy Optimizer</h4>
+          <p>Developed custom automation scripts for firewall rule validation.</p>
+        </article>
+        <article class="card">
+          <h4>Personal Knowledge Hub</h4>
+          <p>Created structured learning notes on cybersecurity frameworks and core computer networking concepts.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <div class="band">
+    <div class="wrap">
+      <h3>Let’s talk network security.</h3>
+      <div class="links">
+        <a class="btn" href="mailto:meetkava1455@example.com">Email me</a>
+        <a class="btn" href="https://www.linkedin.com/in/meet-kava-740792109/">LinkedIn</a>
+        <a class="btn" href="https://github.com/meetkava1455">GitHub</a>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Meet Kava. Hosted on GitHub Pages.</span>
+    <span>
+      <a href="https://www.linkedin.com/in/meet-kava-740792109/">LinkedIn</a>
+      <a href="https://github.com/meetkava1455">GitHub</a>
+      <a href="mailto:meetkava1455@example.com">Email</a>
+    </span>
+  </div>
+</footer>
 
 </body>
 </html>
